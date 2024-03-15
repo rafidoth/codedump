@@ -1,0 +1,40 @@
+
+public class QuickSort {
+	public static void main(String[] args) {
+		
+	}
+	
+	private void quickSorter() {
+		
+	}
+	
+	private void qs(int[] arr , int start, int end) {
+		if(start<end) {
+			
+		}
+	}
+	
+	private int partition(int[] arr, int start, int end) {
+		int pivot = arr[start];
+		int i = start;
+		int j = end;
+		while(i<j) {
+			while(arr[i]<= pivot){
+				i++;
+			}
+			while(arr[j]>pivot) {
+				j--;
+			}
+			if(i<j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+		
+		int temp = arr[0];
+		arr[0] = arr[j];
+		arr[j] = temp;
+		
+	}
+}

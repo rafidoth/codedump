@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class CountingSort {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int[] arr = new int[n];
+		for(int i =0;i<n;i++) {
+			arr[i] = in.nextInt();
+		}
+		CountingSorter(arr);
+		in.close();
+	}
+
+
+	public static void CountingSorter(int[] arr) {
+		int n = arr.length;
+		int maxElement = arr[0];
+		for(int x: arr) {
+			maxElement = Math.max(x, maxElement);
+		}
+		
+		int[] countArray = new int[maxElement+1];
+		for(int i =0;i<n;i++) {
+			countArray[arr[i]]++;
+		}
+		
+		for(int i = 1;i<maxElement+1;i++) {
+			countArray[i] += countArray[i-1];
+		}
+		int[] res = new int[n];
+		for(int i = n-1;i>=0;i--) {
+			countArray[arr[i]]--;
+			res[countArray[arr[i]]] = arr[i];
+		}
+		for(int x: res) {
+			System.out.print(x+" ");
+		}
+		System.out.println();
+		
+	}
+	
+	
+}

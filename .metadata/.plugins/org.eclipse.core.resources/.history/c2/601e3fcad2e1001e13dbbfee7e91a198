@@ -1,0 +1,16 @@
+
+public class QuickSort {
+	public static void main(String[] args) {
+		
+	}
+	
+	private void quickSorter() {
+		
+	}
+	
+	private void qs(int[] arr , int start, int end) {
+		if(start<end) {
+			
+		}
+	}
+}

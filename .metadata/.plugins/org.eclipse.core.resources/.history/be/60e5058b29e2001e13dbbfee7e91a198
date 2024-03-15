@@ -1,0 +1,78 @@
+
+public class LinkedList {
+	Node head = null;
+	static class Node{
+		int data;
+		Node next = null;
+		
+		public Node(int value) {
+			this.data = value;
+			this.next = null;
+		}
+	}
+	
+	void addFront(int value) {
+		Node tempNode = new Node(value);
+		tempNode.next = head;
+		head = tempNode;
+	}
+	
+	void addAny(int value, int pos) {
+		if(pos<1) {
+			return;
+		}else if(pos == 1) {
+			addFront(value);
+			return;
+		}else {
+			Node i = head;
+			Node newNode = new Node(value);
+			while(--pos > 1) {
+				if(i==null) {
+					System.out.println("Invalid Operation");
+					return;
+				}
+				i = i.next;
+			}
+			newNode.next = i.next;
+			i.next = newNode;
+		}
+	}
+	
+	void addLast(int value) {
+		Node newNode = new Node(value);
+		Node i = head;
+		if(i==null) {
+			head = newNode;
+		}else {
+			while(i.next!=null) {
+				i=i.next;
+			}
+			i.next = newNode;
+		}
+	}
+	
+	void display() {
+		Node tempNode = head;
+		while(tempNode!=null) {
+			System.out.print(tempNode.data+ " ");
+			tempNode = tempNode.next;
+		}
+		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+		LinkedList ll = new LinkedList() ;
+		ll.addFront(5);
+		ll.addFront(6);
+		ll.addFront(1);
+		ll.addAny(3, 4);
+		ll.display();
+		ll.addAny(11, 2);
+		ll.display();
+		ll.addAny(9, 1);
+		ll.display();
+		ll.addAny(10, 10);
+		ll.display();
+	
+	}
+}

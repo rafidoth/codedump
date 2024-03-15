@@ -1,0 +1,162 @@
+import java.util.Scanner;
+
+public class LinkedList {
+	Node head = null;
+	static class Node{
+		int data;
+		Node next = null;
+		
+		public Node(int value) {
+			this.data = value;
+			this.next = null;
+		}
+	}
+	
+	void addFront(int value) {
+		Node tempNode = new Node(value);
+		tempNode.next = head;
+		head = tempNode;
+	}
+	
+	void addAny(int value, int pos) {
+		if(pos<1) {
+			return;
+		}else if(pos == 1) {
+			addFront(value);
+			return;
+		}else {
+			Node i = head;
+			Node newNode = new Node(value);
+			while(--pos > 1) {
+				if(i==null) {
+					System.out.println("Invalid Operation");
+					return;
+				}
+				i = i.next;
+			}
+			newNode.next = i.next;
+			i.next = newNode;
+		}
+	}
+	
+	void addLast(int value) {
+		Node newNode = new Node(value);
+		Node i = head;
+		if(i==null) {
+			head = newNode;
+		}else {
+			while(i.next!=null) {
+				i=i.next;
+			}
+			i.next = newNode;
+		}
+	}
+	
+	int deleteFirst() {
+		int val = head.data;
+		if(head!=null) {
+			head = head.next;
+		}
+		return val;
+	}
+	
+	int deleteLast() {
+		if(head == null) {
+			return -1;
+		}
+		int val = head.data;
+		if(head.next == null) {
+			head = null;
+		}else {
+			Node tempNode =head;
+			while(tempNode.next.next!=null) {
+				tempNode= tempNode.next;
+			}
+			val = tempNode.next.data;
+			tempNode.next =null;
+		}
+		
+		return val;
+	}
+	
+	int deleteAny(int pos) {
+		int val;
+		if(pos ==1) {
+			val = deleteFirst();
+		}else {
+			Node tempNode = head;
+			for(int i = 2; i<pos;i++) {
+				tempNode = tempNode.next;
+			}
+			val = tempNode.next.data;
+			tempNode.next = tempNode.next.next;
+		}
+		return val;
+		
+	}
+	
+	void updateFirst(int newValue) {
+		head.data = newValue;
+	}
+	
+	void display() {
+		Node tempNode = head;
+		while(tempNode!=null) {
+			System.out.print(tempNode.data+ " ");
+			tempNode = tempNode.next;
+		}
+		System.out.println();
+	}
+	
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		LinkedList ll = new LinkedList() ;
+		int choice;
+		do {
+			System.out.println("Singly Linked List\nSelect options");
+			System.out.println("1: add element at first");
+			System.out.println("2: add element at the last");
+			System.out.println("3: add element at any position");
+			System.out.println("4: delete from the first");
+			System.out.println("5: delete from the last");
+			System.out.println("6: delete from any index");
+			System.out.println("7: delete from any index");
+			System.out.println("8: delete from any index");
+			System.out.println("9: delete from any index");
+			System.out.println("10: display the list");
+			System.out.println("11: Quit");
+			choice = in.nextInt();
+			switch(choice) {
+				case 1: 
+					ll.addFront(in.nextInt());
+					break;
+				case 2:
+					ll.addLast(in.nextInt());
+					break;
+				case 3:
+					ll.addAny(in.nextInt(), in.nextInt());
+					break;
+				case 4: 
+					ll.deleteFirst();
+					break;
+				case 5:
+					ll.deleteLast();
+					break;
+				case 6:
+					ll.deleteAny(in.nextInt());
+					break;
+				case 7:
+					ll.display();
+					break;
+				case 8: 
+					in.close();
+					return;
+				default: System.out.println("Invalid input");
+			}
+			
+		}while(choice!=8);
+		
+		in.close();
+		
+	}
+}
