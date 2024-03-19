@@ -1,6 +1,7 @@
 ------- Install Neovim
 ------- create init.vim file in ~/.config/nvim/
 ------- Adding basic config
+```
 set number
 syntax enable
 set tabstop=4
@@ -8,11 +9,12 @@ set shiftwidth=4
 set expandtab
 set encoding=utf-8
 filetype plugin indent on
-
+```
 ------- Setup compiler
+```
 " Set C++ file type
 autocmd BufNewFile,BufRead *.cpp set filetype=cpp
- 
+
 " Compile and run C++ program in subshell
 function! CompileAndRun()
   let fileName = expand('%')
@@ -32,23 +34,25 @@ endfunction
 " Map keys to compile and run current file
 map <F5> :call CompileAndRun()<CR>
 map <F9> :w<CR>:!clear<CR>:call CompileAndRun()<CR>
-
+```
 
 
 ------- Install vim plug
 ------- Install autopairs
 ------- Install coc-lsp plugin 
+
+```
 call plug#begin('~/.local/share/nvim/plugged')
  Plug 'jiangmiao/auto-pairs'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
-
+```
 
 ------ Configuring COC server
 1. Installing language server not exist already
 	-> check with clangd --version
 2. Install clang plugin for coc
-	:CocInstall coc-clangd
+	```:CocInstall coc-clangd```
 Now it should suggest language auto complete
 3. create a coc.vim file in nvim directory in .config
 4. in init.vim source the coc.vim
