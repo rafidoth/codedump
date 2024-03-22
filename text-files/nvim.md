@@ -22,7 +22,8 @@ function! CompileAndRun()
     let exeName = substitute(fileName, '\.cpp$', '', '')
     execute 'w | !g++ -std=c++11 -Wall -Wextra -Wpedantic -O2 -o ' . exeName . ' ' . fileName
     if v:shell_error == 0
-      let cmd = "x-terminal-emulator -e bash -c './" . exeName . "; read -p \"Press enter to exit...\"'"
+      let cmd = "alacritty --hold -e bash -c './" . exeName . "'"
+      echo 
       call system(cmd)
       redraw!
     endif
