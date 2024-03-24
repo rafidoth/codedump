@@ -1,4 +1,8 @@
 # Expression Parsing Using Stack
+Table of Contents
+---
+1. [Precedence of the operators](#precedence-of-the-operators)
+2. [Infix to Postfix using Stack](#using-stack)
 
 #### Precedence of the operators
 1. () {} []  
